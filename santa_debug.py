@@ -18,13 +18,11 @@ people = [   #list of all people
     'minivez',
     'jacopo'
 ]
-hasGiven = []     # empty list of people who have been assigned a giftee
-hasReceived = []  # empty list of people who have been assigned a gifter
-pairs = []        # pairs of gifter->giftee will be in this list
+hasGiven, hasReceived, pairs = [], [], [] # empty lists
 i=1               # cycle counter for logging
 numberOfTries = [] #debug
 
-for j in range(200):
+for j in range(200): # do the whole thing 200 times to calculate average number of loops in the end
     hasGiven = []     # reset because FAIL
     hasReceived = []  # reset because FAIL
     pairs = []        # reset because FAIL
@@ -50,12 +48,10 @@ for j in range(200):
 
 
 #################################################
-print('')
 print('printing pairs :')
 for couple in range(len(pairs)):
     print(pairs[couple])
-print('')
 print('it took '+str(i)+' loops')
 
 print(i)
-print('THE BIG NUMBER IS '+str(sum(numberOfTries)/len(numberOfTries)) +"..."+str(len(numberOfTries)))
+print('THE BIG NUMBER IS '+str(sum(numberOfTries)/len(numberOfTries))) #this averages the number of loops it took to have valid pairs, over the 200 tries

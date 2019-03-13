@@ -1,5 +1,5 @@
 import random
-
+# this comment is a test for git 
 people = [   #list of all people
     'luca',
     'elia',

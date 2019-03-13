@@ -18,10 +18,8 @@ people = [   #list of all people
     'minivez',
     'jacopo'
 ]
-hasGiven = []     # empty list of people who have been assigned a giftee
-hasReceived = []  # empty list of people who have been assigned a gifter
-pairs = []        # pairs of gifter->giftee will be in this list
-i=1               # cycle counter for logging
+hasGiven, hasReceived, pairs = [], [], [] # empty lists
+i=1                # cycle counter for logging
 numberOfTries = [] #debug
 
 while (len(hasGiven)!=len(people)):                     # loop until the number of people who have been assigned a giftee is the same number as the total people
@@ -35,14 +33,12 @@ while (len(hasGiven)!=len(people)):                     # loop until the number 
         pairs = []        # reset because FAIL
 
     if (giver!=receiver) and (giver not in hasGiven) and (receiver not in hasReceived): # only when the picked giver and receiver are not the same, and they have not already been giver and receiver respectively
-        pairs.append(giver+'--->'+receiver)             # add giver->receiver to pairs
+        pairs.append(giver+'--->'+receiver)             # add 'giver->receiver' to pairs
         hasGiven.append(giver)                          # add giver to gifters list
         hasReceived.append(receiver)                    # add receiver to giftees list
 
 #################################################
-print('')
-print('printing pairs :')
+print('printing pairs:')
 for couple in range(len(pairs)):
     print(pairs[couple])
-print('')
 print('it took '+str(i)+' loops')

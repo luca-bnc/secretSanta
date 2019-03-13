@@ -38,6 +38,7 @@ while (len(hasGiven)!=len(people)):                     # loop until the number 
         hasReceived.append(receiver)                    # add receiver to giftees list
 
 #################################################
+# comment added for git
 print('printing pairs:')
 for couple in range(len(pairs)):
     print(pairs[couple])

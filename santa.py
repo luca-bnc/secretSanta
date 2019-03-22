@@ -17,18 +17,26 @@ people, forbiddenPairs, hasReceived, pairs = [   # list of all people
     'sara',
     'minivez',
     'jacopo'
-], [('beppe', 'viviana'), ('elena B', 'daniela')], [], []
+], [['beppe', 'viviana'], ['elena B', 'daniela']], [], []
+i = 0
+shit_happened = 0
+random.shuffle(people)
 
-for giver in people:
-    try: # for each person, pick a random dude that is not themselves and that has not yet been picked
-        receiver = random.choice(list(filter(lambda x: x!= giver and x not in hasReceived, people)))
+while i != (len(people)):
+    giver = people[i]
+    try:
+        receiver = random.choice(list(filter(lambda x: (x!=giver and (x not in hasReceived)), people)))
     except IndexError:
-        continue # if last dude has no choice but to pick himself, start again
+        shit_happened += 1
+        pairs = []
+        hasReceived = []
+        i = 0
+        continue
+    # TODO: qualche validazione su forbiddenPairs
+    pairs.append([giver, receiver])
+    hasReceived.append(receiver)
+    i+=1
 
-    if ((giver, receiver) in forbiddenPairs or (receiver, giver) in forbiddenPairs):
-        giver = people.index(giver)-1 # if pairing is forbidden, draw (only that pair) again
-
-    hasReceived.append(receiver) # log that the dude has been picked for receiving, so that they won't be picked again
-    pairs.append((giver, receiver)) # append succesful pairs
 
 pprint.pprint(pairs)
+print('shit happened '+str(shit_happened) +' times')
